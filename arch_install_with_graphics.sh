@@ -22,7 +22,7 @@ echo $mirror > /etc/pacman.d/mirrorlist
 
 
 # Install base system, fstab, grub
-pacstrap -i /mnt base base-devel grub
+pacstrap -i /mnt base base-devel grub --noconfirm
 genfstab -pU /mnt >> /mnt/etc/fstab
 
 
