@@ -31,6 +31,7 @@ arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,sto
 arch-chroot /mnt passwd ads
 arch-chroot /mnt pacman -S xorg-server xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon sddm firefox mc chromium alsa-utils htop screenfetch --noconfirm
 arch-chroot /mnt systemctl enable sddm.service
+arch-chroot /mnt systemctl enable NetworkManager.service
 arch-chroot /mnt /bin/bash -c '
 if [ -b /dev/sda ]; then DISK="/dev/sda"; fi
 echo "KEYMAP=us" > /etc/vconsole.conf
