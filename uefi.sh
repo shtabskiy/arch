@@ -4,7 +4,7 @@ trap '' 2
 #Get the disk
 #Проверка блочного уст-ва 
 #True if FILE exists and is a block-special file.
-if [ -b /dev/sda ]; then DISK="/dev/sda"; fi
+if [ -b /dev/sd ]; then DISK="/dev/sda"; fi
 
 #Преобразование диска в gpt
 parted $DISK "mklabel gpt Yes"
@@ -34,7 +34,7 @@ genfstab -pU /mnt >> /mnt/etc/fstab
 # Keyboard, locale, time
 arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash ads
 arch-chroot /mnt passwd ads
-arch-chroot /mnt pacman -S xorg-server xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc audacious gedit htop screenfetch --noconfirm
+arch-chroot /mnt pacman -S os-prober xorg-server xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc audacious gedit htop screenfetch --noconfirm
 arch-chroot /mnt systemctl enable sddm.service
 arch-chroot /mnt systemctl enable NetworkManager.service
 arch-chroot /mnt /bin/bash -c '
