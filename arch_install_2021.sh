@@ -21,7 +21,7 @@ genfstab -pU /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash ads
 arch-chroot /mnt passwd ads
-arch-chroot /mnt pacman -S xorg-server dhcpcd xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc audacious gedit htop screenfetch --noconfirm
+arch-chroot /mnt pacman -S xorg-server grub dhcpcd xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc audacious gedit htop screenfetch --noconfirm
 arch-chroot /mnt systemctl enable sddm.service
 arch-chroot /mnt systemctl enable NetworkManager.service
 arch-chroot /mnt /bin/bash -c '
@@ -42,7 +42,7 @@ sudo hwclock --hctosys --localtime
 echo "root:1" | chpasswd
 # Install Grub
 grub-install $DISK
-echo GRUB_DISABLE_SUBMENU=y >> /etc/default/grub
+#echo GRUB_DISABLE_SUBMENU=y >> /etc/default/grub
 grub-mkconfig -o /boot/grub/grub.cfg
 # Ensure DHCP service can start
 systemctl enable dhcpcd.service
