@@ -19,7 +19,7 @@ pacstrap /mnt base base-devel linux linux-firmware --noconfirm
 #Create fstab file
 genfstab -pU /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt useradd -m -g users -G audio,games,sudo,lp,optical,power,scanner,storage,video,wheel -s /bin/bash ads
+arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash ads
 arch-chroot /mnt passwd ads
 arch-chroot /mnt pacman -S sudo xorg-server grub dhcpcd xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc audacious gedit htop screenfetch --noconfirm
 arch-chroot /mnt systemctl enable sddm.service
@@ -47,6 +47,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # Ensure DHCP service can start
 systemctl enable dhcpcd.service
 systemctl start dhcpcd
+echo "root:12345" | chpasswd
 '
 umount -R /mnt
 reboot
