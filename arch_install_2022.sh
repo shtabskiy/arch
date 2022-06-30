@@ -21,7 +21,7 @@ genfstab -pU /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash ads
 arch-chroot /mnt passwd ads
-arch-chroot /mnt pacman -S sudo xorg-server grub dhcpcd xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc nm-applet audacious gedit htop screenfetch --noconfirm
+arch-chroot /mnt pacman -S sudo xorg-server grub dhcpcd xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc networkmanager-openvpn nm-applet audacious gedit htop screenfetch --noconfirm
 arch-chroot /mnt systemctl enable sddm.service
 arch-chroot /mnt systemctl enable NetworkManager.service
 arch-chroot /mnt /bin/bash -c '
