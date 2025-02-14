@@ -22,8 +22,8 @@ genfstab -pU /mnt >> /mnt/etc/fstab
 # Спрашиваем имя пользователя
 read -p "Enter username to create: " USERNAME
 
-arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash "$USERNAME
-arch-chroot /mnt passwd "$USERNAME
+arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash "$USERNAME"
+arch-chroot /mnt passwd "$USERNAME"
 arch-chroot /mnt pacman -S sudo xorg-server grub dhcpcd xorg-xinit xorg-apps mesa-libgl xterm xf86-video-vesa cinnamon arc-icon-theme arc-gtk-theme file-roller gvfs-smb samba cifs-utils sddm firefox mc chromium alsa-utils  gnome-terminal gthumb vlc networkmanager-openvpn network-manager-applet audacious gedit htop screenfetch --noconfirm
 arch-chroot /mnt systemctl enable sddm.service
 arch-chroot /mnt systemctl enable NetworkManager.service
@@ -52,7 +52,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable dhcpcd.service
 systemctl start dhcpcd
 echo "root:12345" | chpasswd
-sudo pacman -S --needed git base-devel --noconfirm && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
+su -c "sudo pacman -S --needed git base-devel --noconfirm && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm" -s /bin/bash '"$USERNAME"'
 '
 umount -R /mnt
 reboot
