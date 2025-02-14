@@ -40,6 +40,8 @@ ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
 sudo hwclock --hctosys --localtime
 # Set the root password
 echo "root:1" | chpasswd
+# Add user to sudo
+echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
 # Install Grub
 grub-install $DISK
 #echo GRUB_DISABLE_SUBMENU=y >> /etc/default/grub
