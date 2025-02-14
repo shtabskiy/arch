@@ -20,7 +20,7 @@ pacstrap /mnt base base-devel linux linux-firmware --noconfirm
 genfstab -pU /mnt >> /mnt/etc/fstab
 
 # Спрашиваем имя пользователя
-read -p "Введите имя пользователя, которого хотите создать: " USERNAME
+read -p "Enter username to create: " USERNAME
 
 arch-chroot /mnt useradd -m -g users -G audio,games,lp,optical,power,scanner,storage,video,wheel -s /bin/bash "$USERNAME
 arch-chroot /mnt passwd "$USERNAME
