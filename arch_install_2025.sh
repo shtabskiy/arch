@@ -40,7 +40,7 @@ locale-gen
 #sudo hwclock --hctosys --localtime
 timedatectl set-timezone Europe/Moscow
 # Add user to sudo
-echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
+echo "ads ALL=(ALL) ALL" >> /etc/sudoers
 # Install Grub
 grub-install $DISK
 #echo GRUB_DISABLE_SUBMENU=y >> /etc/default/grub
