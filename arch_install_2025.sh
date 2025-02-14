@@ -36,10 +36,9 @@ localectl set-locale LANG="ru_RU.UTF-8"
 export LANG=ru_RU.UTF-8
 echo "FONT=cyr-sun16" >> /etc/vconsole.conf
 locale-gen
-ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
-sudo hwclock --hctosys --localtime
-# Set the root password
-echo "root:1" | chpasswd
+#ln -s /usr/share/zoneinfo/US/Eastern /etc/localtime
+#sudo hwclock --hctosys --localtime
+timedatectl set-timezone Europe/Moscow
 # Add user to sudo
 echo "$USERNAME ALL=(ALL) ALL" >> /etc/sudoers
 # Install Grub
@@ -50,6 +49,7 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable dhcpcd.service
 systemctl start dhcpcd
 echo "root:12345" | chpasswd
+sudo pacman -S --needed git base-devel --noconfirm && git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si --noconfirm
 '
 umount -R /mnt
 reboot
